@@ -1,6 +1,8 @@
 # git_sync
 Script to synchronize the git repository
 
+I used to edit the notes I put in Dropbox on various computers as I felt like, but I was limited to the number of devices in Dropbox, so I made a simple script that I could use instead of Dropbox.
+
 ## Usage
 
 (1) Clone your git repository as ~/sync_files
@@ -32,7 +34,7 @@ sync_dir=~/sync_files
 interval_sec=15
 ```
 
-## points to note
+## Points to note
 
 (1)Only one repository can be monitored. I didn't need to monitor multiple repositories at the same time for my purposes.
 
