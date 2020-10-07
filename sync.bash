@@ -1,27 +1,33 @@
 #!/usr/bin/env bash
 
 sync_dir=~/sync_files
-interval_sec=15
+interval_sec=30
+
+log () {
+    local date=$(date +"%Y-%m-%d %T.%3N")
+    local message=$1
+    echo "$date $message"
+}
 
 cd $sync_dir
 
-echo "sync ${sync_dir}"
+log "sync ${sync_dir}"
 
 while : ;
 do
-    echo "== check status"
+    log "check status"
     status_count=$(git status --porcelain=v1 | wc -l)
     if [[ $status_count > 0 ]] ; then
-        echo "== update"
+        log "update"
         git add .
-        echo "== commit"
+        log "commit"
         git commit -m "update files"
-        echo "== push"
+        log "push"
         git push
         notify-send "sync push"
     fi
 
-    echo "== pull"
+    log "pull"
     git pull
 
     sleep $interval_sec
